@@ -60,7 +60,7 @@ const ProductCard = () => {
         <Button
           fullWidth
           variant="contained"
-          color="primary"
+          color="secondary"
           startIcon={<RemoveRedEyeOutlinedIcon />}
           sx={{ borderRadius: 1.5, fontWeight: 600, textTransform: "none" }}
         >

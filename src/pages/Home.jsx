@@ -19,20 +19,6 @@ const Home = () => {
       <ProductCard />
       <ProductCard />
       <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard /> <ProductCard />
-      <ProductCard />
-      <ProductCard /> <ProductCard />
-      <ProductCard />
-      <ProductCard /> <ProductCard />
-      <ProductCard />
-      <ProductCard /> <ProductCard />
-      <ProductCard />
-      <ProductCard />
     </Box>
   );
 };
