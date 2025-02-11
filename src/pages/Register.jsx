@@ -9,12 +9,27 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import { Formik } from "formik";
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import * as yup from "yup";
+import axiosInstance from "../../lib/axios.instance";
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  // register user api hit
+  const registerUser = async (values) => {
+    try {
+      const res = await axiosInstance.post("/user/register", values);
+
+      navigate("/login");
+    } catch (error) {
+      console.log("Register user error...");
+      console.log(error);
+    }
+  };
   return (
     <Formik
       initialValues={{
@@ -62,8 +77,8 @@ const Register = () => {
           .min(10, "Phone number must be at least 10 characters.")
           .max(20, "Phone number must be at max 20 characters."),
       })}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={async (values) => {
+        registerUser(values);
       }}
     >
       {(formik) => {

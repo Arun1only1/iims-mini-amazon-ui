@@ -1,7 +1,7 @@
 import { Box, Button, Chip, Stack, Typography } from "@mui/material";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
-const ProductCard = () => {
+const ProductCard = (props) => {
   return (
     <Box
       sx={{
@@ -33,18 +33,18 @@ const ProductCard = () => {
           justifyContent="space-between"
         >
           <Typography variant="h6" fontWeight={600}>
-            {` Samsung 55" 4K TV`}
+            {props.name}
           </Typography>
           <Chip
             color="warning"
-            label="Samsung"
+            label={props.brand}
             variant="filled"
             sx={{ fontWeight: 500 }}
           />
         </Stack>
 
         <Typography variant="h5" fontWeight={700} color="primary">
-          $800
+          ${props.price}
         </Typography>
 
         <Typography
@@ -52,9 +52,7 @@ const ProductCard = () => {
           color="text.secondary"
           sx={{ lineHeight: 1.6, textAlign: "justify" }}
         >
-          {`Experience crystal-clear picture quality with Samsung's 4K TV.
-          Featuring vibrant colors, smart connectivity, and a sleek modern
-          design, it's the perfect addition to any home entertainment setup.`}
+          {props.description}
         </Typography>
 
         <Button

@@ -6,12 +6,15 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import { Formik } from "formik";
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import * as yup from "yup";
+import axiosInstance from "../../lib/axios.instance";
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <Formik
       initialValues={{
@@ -27,8 +30,20 @@ const Login = () => {
           .lowercase(),
         password: yup.string().required("Password is required.").trim(),
       })}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={async (values) => {
+        try {
+          const res = await axiosInstance.post("/user/login", values);
+
+          navigate("/");
+
+          const accessToken = res.data?.accessToken;
+
+          localStorage.setItem("accessToken", accessToken);
+          console.log(res);
+        } catch (error) {
+          console.log("Login user api hit failed...");
+          console.log(error);
+        }
       }}
     >
       {(formik) => {
